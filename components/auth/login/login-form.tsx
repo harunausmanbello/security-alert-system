@@ -68,7 +68,7 @@ export const LoginForm = () => {
                   <Form.FormControl>
                     <Input
                       {...field}
-                      placeholder="FCP/CSC/19/2009"
+                      placeholder="21/511/0001"
                       type="text"
                       name="login"
                     />

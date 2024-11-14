@@ -1,6 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { NavbuttonProps } from "@/types";
+import Link from "next/link";
 
 export const Navbutton = ({
   children,
@@ -11,14 +12,14 @@ export const Navbutton = ({
   const router = useRouter();
 
   return (
-    <span
+    <Link
+      href={endPoint}
+      className="flex flex-col items-center justify-center cursor-pointer"
       onClick={() => {
         localStorage.clear();
-        router.push(endPoint);
       }}
-      className="flex flex-col items-center justify-center cursor-pointer"
     >
-      {children}
-    </span>
+      <span>{children}</span>
+    </Link>
   );
 };

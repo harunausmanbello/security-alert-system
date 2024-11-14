@@ -14,7 +14,7 @@ const { auth } = NextAuth(authConfig);
 export default auth(async (req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
-
+  const session = await auth();
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
   const isAuthRoute = authRoutes.includes(nextUrl.pathname);
@@ -23,8 +23,6 @@ export default auth(async (req) => {
 
   if (isAuthRoute) {
     if (isLoggedIn) {
-      const session = await auth();
-
       if (session?.user?.role === "ADMIN")
         return Response.redirect(new URL(ADMIN_LOGGEDIN_REDIRECT, nextUrl));
       if (session?.user?.role === "USER")

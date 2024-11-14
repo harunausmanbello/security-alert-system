@@ -5,6 +5,7 @@ import "@radix-ui/themes/styles.css";
 import { Toaster } from "react-hot-toast";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SessionProvider } from "next-auth/react";
+import TopLoader from "@/components/ui/top-loader";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <TopLoader />
           <SessionProvider>{children}</SessionProvider>
           <Toaster position="top-right" reverseOrder={false} />
         </ThemeProvider>
